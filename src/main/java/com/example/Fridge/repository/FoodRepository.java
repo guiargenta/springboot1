@@ -9,5 +9,4 @@ public interface FoodRepository extends JpaRepository<Food, Long> {
 
     List<Food> id(Long id);
 
-    List<Food> id(Long id);
 }

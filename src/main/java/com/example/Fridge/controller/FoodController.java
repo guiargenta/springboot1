@@ -3,10 +3,7 @@ package com.example.Fridge.controller;
 import com.example.Fridge.model.Food;
 import com.example.Fridge.repository.FoodRepository;
 import com.example.Fridge.service.FoodService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,12 +21,11 @@ public class FoodController {
         this.foodRepository = foodRepository;
     }
 
-    // Listar
     @GetMapping
     public List<Food> getAll() { return foodService.getAll(); }
 
-    @PostMapping
-    public Food create(String name, LocalDate expirationDate, Integer quantity) {
-        return
+    @PostMapping()
+    public Food create(@RequestBody Food food) {
+        return foodService.save(food);
     }
 }
